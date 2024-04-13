@@ -1,0 +1,52 @@
+body {
+  background-color: rgb(53, 53, 53);
+}
+input {
+  width: 500px;
+  height: 50px;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.b1 {
+  min-width: 457px;
+  height: 50px;
+  font-size: 22px;
+  margin-bottom: 5px;
+  text-align: center;
+  border: 2px white;
+}
+.b2 {
+  width: 51px;
+  height: 50px;
+  background-color: brown;
+  color: white;
+  font-size: 33px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+
+  border: 2px brown;
+}
+.b1:hover {
+  background-color: rgb(203, 201, 201);
+  border: 2px rgb(203, 201, 201);
+}
+.b2:hover {
+  background-color: rgb(91, 23, 23);
+  border: 2px rgb(91, 23, 23);
+}
+.text {
+  text-decoration-line: line-through;
+}
+#divA,
+#divB {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  width: 1200px;
+}
