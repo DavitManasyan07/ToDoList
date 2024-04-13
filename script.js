@@ -20,6 +20,15 @@ inputElement.addEventListener("keydown", (el) => {
   }
 });
 
+const clear = document.getElementById("clear");
+clear.addEventListener("click", () => {
+  const divB = document.getElementById("divB");
+  const btnsArr = [...document.getElementsByClassName("btns")];
+  btnsArr.forEach((btn) => {
+    divB.removeChild(btn);
+  });
+});
+
 function createElement(text) {
   let l = id;
   const divB = document.getElementById("divB");
