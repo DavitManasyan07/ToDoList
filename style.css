@@ -17,20 +17,21 @@ input {
   border: 2px white;
 }
 .b2 {
-  width: 51px;
+  width: 50px;
   height: 50px;
   background-color: brown;
   color: white;
   font-size: 33px;
   margin-bottom: 5px;
   margin-right: 5px;
-
+  text-align: center;
   border: 2px brown;
 }
 .b1:hover {
   background-color: rgb(203, 201, 201);
   border: 2px rgb(203, 201, 201);
 }
+.C:hover,
 .b2:hover {
   background-color: rgb(91, 23, 23);
   border: 2px rgb(91, 23, 23);
@@ -49,4 +50,16 @@ input {
   display: flex;
   justify-content: center;
   width: 1200px;
+}
+
+.C {
+  width: 56px;
+  height: 56px;
+  background-color: brown;
+  color: white;
+  font-size: 50px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  text-align: center;
+  border: 2px brown;
 }
