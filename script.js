@@ -27,6 +27,7 @@ clear.addEventListener("click", () => {
   btnsArr.forEach((btn) => {
     divB.removeChild(btn);
   });
+id = 0;
 });
 
 function createElement(text) {
