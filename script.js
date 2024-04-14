@@ -1,6 +1,25 @@
 const inputElement = document.querySelector("input");
 let toDosentence = [];
 let id = 0;
+
+let todoObj = {};
+if (!localStorage.getItem("todoObj")) {
+  localStorage.setItem("todoObj", JSON.stringify(todoObj));
+} else {
+  todoObj = JSON.parse(localStorage.getItem("todoObj"));
+}
+
+for (let key in todoObj) {
+  createElement(todoObj[key][0]);
+  if (todoObj[key][1]) {
+    document.getElementById(`b1${key}`/*key*/).classList.add("text")
+  }
+}
+
+if (Object.keys(todoObj).length) {
+  id = Number(Object.keys(todoObj)[Object.keys(todoObj).length - 1]) + 1;
+}
+
 inputElement.addEventListener("keydown", (el) => {
   let element = el.key;
 
@@ -15,6 +34,7 @@ inputElement.addEventListener("keydown", (el) => {
   } else if (element === "Enter") {
     let text = toDosentence.join("");
     if (text) {
+      todoObj[id] = [text];
       createElement(text);
     }
   }
@@ -27,11 +47,13 @@ clear.addEventListener("click", () => {
   btnsArr.forEach((btn) => {
     divB.removeChild(btn);
   });
-id = 0;
+  localStorage.clear();
+  todoObj = {};
+  id = 0;
+  localStorage.setItem("todoObj", JSON.stringify(todoObj));
 });
 
 function createElement(text) {
-  let l = id;
   const divB = document.getElementById("divB");
   const newDiv = document.createElement("div");
   const input = document.getElementById("inputB");
@@ -47,18 +69,27 @@ function createElement(text) {
   newButton2.innerText = "X";
   newButton1.classList.add("b1");
   newButton2.classList.add("b2");
-  newButton1.id = id;
+  newButton1.id = `b1${id}`//id;
   newButton2.id = id;
   input.value = "";
   toDosentence = [];
+  let elementID = id;
 
   newButton1.addEventListener("click", () => {
     newButton1.classList.toggle("text");
+    if (!todoObj[elementID][1] === true) {
+      todoObj[elementID].push(true);
+    } else {
+      todoObj[elementID].pop();
+    }
+    localStorage.setItem("todoObj", JSON.stringify(todoObj));
   });
 
   newButton2.addEventListener("click", () => {
+    delete todoObj[elementID];
+    localStorage.setItem("todoObj", JSON.stringify(todoObj));
     divB.removeChild(newDiv);
   });
-
+  localStorage.setItem("todoObj", JSON.stringify(todoObj));
   id++;
 }
