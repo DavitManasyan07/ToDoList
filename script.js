@@ -1,23 +1,21 @@
 const inputElement = document.querySelector("input");
+const add = document.getElementById("add");
 let toDosentence = [];
+let todoObj = {};
 let id = 0;
 
-let todoObj = {};
 if (!localStorage.getItem("todoObj")) {
   localStorage.setItem("todoObj", JSON.stringify(todoObj));
 } else {
   todoObj = JSON.parse(localStorage.getItem("todoObj"));
 }
-
-for (let key in todoObj) {
-  createElement(todoObj[key][0]);
-  if (todoObj[key][1]) {
-    document.getElementById(`b1${key}`/*key*/).classList.add("text")
-  }
+if (Object.keys(todoObj).length) {
+  id = Number(Object.keys(todoObj)[Object.keys(todoObj).length - 1][2]) + 1;
 }
 
-if (Object.keys(todoObj).length) {
-  id = Number(Object.keys(todoObj)[Object.keys(todoObj).length - 1]) + 1;
+for (let key in todoObj) {
+  id = key[2];
+  createElement(todoObj[key][0]);
 }
 
 inputElement.addEventListener("keydown", (el) => {
@@ -34,10 +32,17 @@ inputElement.addEventListener("keydown", (el) => {
   } else if (element === "Enter") {
     let text = toDosentence.join("");
     if (text) {
-      todoObj[id] = [text];
+      todoObj[`b1${id}`] = [text, false];
       createElement(text);
     }
   }
+  add.addEventListener("click", () => {
+    let text = toDosentence.join("");
+    if (text) {
+      todoObj[`b1${id}`] = [text, false];
+      createElement(text);
+    }
+  });
 });
 
 const clear = document.getElementById("clear");
@@ -69,24 +74,30 @@ function createElement(text) {
   newButton2.innerText = "X";
   newButton1.classList.add("b1");
   newButton2.classList.add("b2");
-  newButton1.id = `b1${id}`//id;
+  newButton1.id = `b1${id}`;
   newButton2.id = id;
   input.value = "";
   toDosentence = [];
   let elementID = id;
 
+  let newButElid = newButton1.id;
+
+  if (todoObj[newButElid][1]) {
+    newButton1.classList.toggle("text");
+  }
+
   newButton1.addEventListener("click", () => {
     newButton1.classList.toggle("text");
-    if (!todoObj[elementID][1] === true) {
-      todoObj[elementID].push(true);
+    if (!todoObj[newButElid][1]) {
+      todoObj[newButElid][1] = true;
     } else {
-      todoObj[elementID].pop();
+      todoObj[newButElid][1] = false;
     }
     localStorage.setItem("todoObj", JSON.stringify(todoObj));
   });
 
   newButton2.addEventListener("click", () => {
-    delete todoObj[elementID];
+    delete todoObj[newButElid];
     localStorage.setItem("todoObj", JSON.stringify(todoObj));
     divB.removeChild(newDiv);
   });
