@@ -14,7 +14,7 @@ if (Object.keys(todoObj).length) {
 }
 
 for (let key in todoObj) {
-  id = key[2];
+  id = +key.slice(2, key.length);
   createElement(todoObj[key][0]);
 }
 
