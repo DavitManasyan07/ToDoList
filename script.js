@@ -1,4 +1,4 @@
-const inputElement = document.querySelector("input");
+const inputElement = document.getElementById("inputB");
 const add = document.getElementById("add");
 let toDosentence = [];
 let todoObj = {};
@@ -46,6 +46,7 @@ inputElement.addEventListener("keydown", (el) => {
 });
 
 const clear = document.getElementById("clear");
+
 clear.addEventListener("click", () => {
   const divB = document.getElementById("divB");
   const btnsArr = [...document.getElementsByClassName("btns")];
