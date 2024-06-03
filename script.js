@@ -37,6 +37,7 @@ inputElement.addEventListener("keydown", (el) => {
     }
   }
   add.addEventListener("click", () => {
+    alert("work");
     let text = toDosentence.join("");
     if (text) {
       todoObj[`b1${id}`] = [text, false];
