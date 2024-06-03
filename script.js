@@ -36,7 +36,9 @@ inputElement.addEventListener("keydown", (el) => {
       createElement(text);
     }
   }
-  add.addEventListener("click", () => {
+});
+  
+add.addEventListener("click", () => {
     alert("work");
     let text = toDosentence.join("");
     if (text) {
@@ -44,7 +46,6 @@ inputElement.addEventListener("keydown", (el) => {
       createElement(text);
     }
   });
-});
 
 const clear = document.getElementById("clear");
 
