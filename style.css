@@ -35,7 +35,6 @@ input {
 .C:hover,
 .b2:hover {
   background-color: rgb(91, 23, 23);
-  border: 2px rgb(91, 23, 23);
 }
 .text {
   text-decoration-line: line-through;
@@ -64,3 +63,11 @@ input {
   border: 2px brown;
 }
 
+@media (max-width:700px){
+input{
+  width: 250px;
+}
+.b1{
+  min-width: 350px;
+}
+}
