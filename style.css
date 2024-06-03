@@ -77,6 +77,10 @@ input {
 input{
   width: 175px;
 }
+.btns{
+  margin: 5px;
+  max-width: 625px;
+}
 .b1{
   min-width: 350px;
 }.add{
